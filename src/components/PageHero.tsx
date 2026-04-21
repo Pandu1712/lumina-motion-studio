@@ -34,21 +34,21 @@ export function PageHero({
         className="absolute top-[55%] left-0 right-0 h-px bg-amber/30 origin-left"
       />
 
-      <div className="relative z-10 h-full flex flex-col justify-end pb-20 px-6 md:px-10 max-w-[1400px] mx-auto">
+      <div className="relative z-10 h-full flex flex-col justify-end pb-12 md:pb-20 px-6 md:px-10 max-w-[1400px] mx-auto">
         <Reveal delay={0.2}>
-          <div className="flex items-center gap-3 mb-8 text-amber text-xs uppercase tracking-[0.4em]">
+          <div className="flex items-center gap-3 mb-4 md:mb-8 text-amber text-xs uppercase tracking-[0.4em]">
             <span className="amber-line" /> {eyebrow}
           </div>
         </Reveal>
         <Layered3DTitle
           as="h1"
           text={title}
-          className="font-display text-[12vw] md:text-[8vw] leading-[0.9] tracking-tight block"
+          className="font-display text-[15vw] sm:text-[12vw] md:text-[8vw] leading-[0.9] tracking-tight block"
           delay={0.3}
-          layers={6}
+          layers={4}
         />
-        <Reveal delay={1} className="mt-8 max-w-2xl">
-          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">{tagline}</p>
+        <Reveal delay={1} className="mt-6 md:mt-8 max-w-2xl">
+          <p className="text-base md:text-xl text-foreground/80 leading-relaxed line-clamp-3 md:line-clamp-none">{tagline}</p>
         </Reveal>
       </div>
     </section>
