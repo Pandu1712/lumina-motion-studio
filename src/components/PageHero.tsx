@@ -16,12 +16,13 @@ export function PageHero({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["-2%", "2%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.25]);
 
   return (
     <section ref={ref} className="relative h-[80vh] min-h-[600px] overflow-hidden grain pt-20">
-      <motion.div style={{ y, scale }} className="absolute inset-0">
+      <motion.div style={{ y, x, scale }} className="absolute inset-0">
         <img src={image} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/40" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/30" />
@@ -43,7 +44,7 @@ export function PageHero({
         <Layered3DTitle
           as="h1"
           text={title}
-          className="font-display text-[15vw] sm:text-[12vw] md:text-[8vw] leading-[0.9] tracking-tight block"
+          className="font-display text-[13vw] sm:text-[12vw] md:text-[8vw] leading-[0.95] md:leading-[0.9] tracking-tight block"
           delay={0.3}
           layers={4}
         />

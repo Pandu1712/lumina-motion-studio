@@ -1,21 +1,22 @@
-import heroImg from "@/assets/hero-rig.jpg";
-import { motion, useScroll, useTransform } from "framer-motion";
+import heroConvoy from "@/assets/motion/hero_convoy.png";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
-import { RevealText, Reveal } from "./Reveal";
+import { Reveal } from "./Reveal";
 import { Layered3DTitle } from "./Text3D";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["-2%", "2%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.25]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
 
   return (
-    <section ref={ref} className="relative h-[110vh] overflow-hidden grain">
-      <motion.div style={{ y, scale }} className="absolute inset-0">
-        <img src={heroImg} alt="OFSAT rig moving operation at sunset" className="w-full h-full object-cover" />
+    <section ref={ref} className="relative h-[110vh] overflow-hidden grain shadow-inset">
+      <motion.div style={{ y, x, scale }} className="absolute inset-0">
+        <img src={heroConvoy} alt="OFSAT winch truck convoy travelling" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/60" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/30" />
       </motion.div>

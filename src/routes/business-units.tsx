@@ -9,7 +9,7 @@ import { Reveal } from "@/components/Reveal";
 import { ServiceSection } from "@/components/ServiceSection";
 import { ScrollTracker } from "@/components/ScrollTracker";
 import { services } from "@/lib/services";
-import heroImg from "@/assets/hero-rig.jpg";
+const heroImg = "C:\\Users\\win\\.gemini\\antigravity\\brain\\bd452006-04de-4086-9b64-5de525beada7\\hero_truck_convoy_motion_1776782166902.png";
 
 export const Route = createFileRoute("/business-units")({
   component: UnitsPage,

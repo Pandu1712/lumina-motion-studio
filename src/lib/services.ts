@@ -1,9 +1,9 @@
-import rigMoving from "@/assets/service-rigmoving.jpg";
-import generators from "@/assets/service-generators.jpg";
-import drilling from "@/assets/service-drilling.jpg";
-import trucks from "@/assets/service-trucks.jpg";
-import logistics from "@/assets/service-logistics.jpg";
-import saudi from "@/assets/service-saudi.jpg";
+import rigMove from "@/assets/motion/rig_move.png";
+import drilling from "@/assets/motion/drilling.png";
+import generators from "@/assets/motion/generators.png";
+import kenworth from "@/assets/motion/kenworth.png";
+import logistics from "@/assets/motion/logistics.png";
+import saudi from "@/assets/motion/saudi.png";
 
 export type Service = {
   slug: string;
@@ -27,7 +27,7 @@ export const services: Service[] = [
     tagline: "Premier rig moving company in the Sultanate of Oman since 1984.",
     description:
       "For the last 20 years OFSAT have enjoyed a long-term partnership with BahwanDHL to help shape and modernise rig moving and logistics. We use a range of differing technologies to ensure that rig moves and cargo operations are run safely, efficiently and reliably.",
-    image: rigMoving,
+    image: rigMove,
     stats: [
       { label: "Land rigs moved", value: "110+" },
       { label: "Cargo transported", value: "90,000 t" },
@@ -111,7 +111,7 @@ export const services: Service[] = [
     tagline: "Manufacturer of the world's best heavy and medium duty trucks.",
     description:
       "Kenworth is an industry leader in providing fuel-saving technology solutions that help increase efficiency and reduce emissions. As authorised partners, we deliver sales, service and a complete parts ecosystem.",
-    image: trucks,
+    image: kenworth,
     stats: [
       { label: "Trucks delivered", value: "640" },
       { label: "Service centres", value: "6" },

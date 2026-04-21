@@ -51,12 +51,12 @@ export function Header() {
           ))}
         </nav>
 
-        <Link to="/contact" className="hidden md:inline-flex btn-amber text-sm">
+        <Link to="/contact" className="!hidden md:!inline-flex btn-amber text-sm whitespace-nowrap">
           Get in touch
           <span>→</span>
         </Link>
 
-        <button onClick={() => setOpen(!open)} className="lg:hidden text-foreground p-2">
+        <button onClick={() => setOpen(!open)} className="lg:hidden text-foreground p-2 ml-auto">
           {open ? <X /> : <Menu />}
         </button>
       </div>
