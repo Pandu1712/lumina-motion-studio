@@ -1,14 +1,12 @@
 {
   "version": 2,
   "framework": "vite",
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "dist/client",
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/dist/client/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/dist/client/index.html"
+      "destination": "/index.html"
     }
   ]
 }
