@@ -4,12 +4,13 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const nav = [
-  { label: "Home", to: "/" },
-  { label: "Company", to: "/company" },
-  { label: "Business Units", to: "/#units" },
-  { label: "Commitments", to: "/#commitments" },
-  { label: "News", to: "/#news" },
-  { label: "Contact", to: "/#contact" },
+  { label: "Home", to: "/" as const },
+  { label: "Company", to: "/company" as const },
+  { label: "Business Units", to: "/business-units" as const },
+  { label: "Commitments", to: "/commitments" as const },
+  { label: "News", to: "/news" as const },
+  { label: "Locations", to: "/locations" as const },
+  { label: "Contact", to: "/contact" as const },
 ];
 
 export function Header() {
@@ -40,6 +41,8 @@ export function Header() {
             <Link
               key={n.to}
               to={n.to}
+              activeProps={{ className: "text-amber" }}
+              activeOptions={{ exact: n.to === "/" }}
               className="relative text-sm tracking-wide text-foreground/80 hover:text-amber transition-colors group"
             >
               {n.label}
@@ -48,7 +51,7 @@ export function Header() {
           ))}
         </nav>
 
-        <Link to="/" className="hidden md:inline-flex btn-amber text-sm">
+        <Link to="/contact" className="hidden md:inline-flex btn-amber text-sm">
           Get in touch
           <span>→</span>
         </Link>

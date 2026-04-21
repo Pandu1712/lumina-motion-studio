@@ -9,9 +9,45 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as LocationsRouteImport } from './routes/locations'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CompanyRouteImport } from './routes/company'
+import { Route as CommitmentsRouteImport } from './routes/commitments'
+import { Route as BusinessUnitsRouteImport } from './routes/business-units'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsRoute = LocationsRouteImport.update({
+  id: '/locations',
+  path: '/locations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyRoute = CompanyRouteImport.update({
+  id: '/company',
+  path: '/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommitmentsRoute = CommitmentsRouteImport.update({
+  id: '/commitments',
+  path: '/commitments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessUnitsRoute = BusinessUnitsRouteImport.update({
+  id: '/business-units',
+  path: '/business-units',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +61,123 @@ const ServicesSlugRoute = ServicesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/business-units': typeof BusinessUnitsRoute
+  '/commitments': typeof CommitmentsRoute
+  '/company': typeof CompanyRoute
+  '/contact': typeof ContactRoute
+  '/locations': typeof LocationsRoute
+  '/news': typeof NewsRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/business-units': typeof BusinessUnitsRoute
+  '/commitments': typeof CommitmentsRoute
+  '/company': typeof CompanyRoute
+  '/contact': typeof ContactRoute
+  '/locations': typeof LocationsRoute
+  '/news': typeof NewsRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/business-units': typeof BusinessUnitsRoute
+  '/commitments': typeof CommitmentsRoute
+  '/company': typeof CompanyRoute
+  '/contact': typeof ContactRoute
+  '/locations': typeof LocationsRoute
+  '/news': typeof NewsRoute
   '/services/$slug': typeof ServicesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/services/$slug'
+  fullPaths:
+    | '/'
+    | '/business-units'
+    | '/commitments'
+    | '/company'
+    | '/contact'
+    | '/locations'
+    | '/news'
+    | '/services/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/services/$slug'
-  id: '__root__' | '/' | '/services/$slug'
+  to:
+    | '/'
+    | '/business-units'
+    | '/commitments'
+    | '/company'
+    | '/contact'
+    | '/locations'
+    | '/news'
+    | '/services/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/business-units'
+    | '/commitments'
+    | '/company'
+    | '/contact'
+    | '/locations'
+    | '/news'
+    | '/services/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BusinessUnitsRoute: typeof BusinessUnitsRoute
+  CommitmentsRoute: typeof CommitmentsRoute
+  CompanyRoute: typeof CompanyRoute
+  ContactRoute: typeof ContactRoute
+  LocationsRoute: typeof LocationsRoute
+  NewsRoute: typeof NewsRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations': {
+      id: '/locations'
+      path: '/locations'
+      fullPath: '/locations'
+      preLoaderRoute: typeof LocationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company': {
+      id: '/company'
+      path: '/company'
+      fullPath: '/company'
+      preLoaderRoute: typeof CompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commitments': {
+      id: '/commitments'
+      path: '/commitments'
+      fullPath: '/commitments'
+      preLoaderRoute: typeof CommitmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business-units': {
+      id: '/business-units'
+      path: '/business-units'
+      fullPath: '/business-units'
+      preLoaderRoute: typeof BusinessUnitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,6 +197,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BusinessUnitsRoute: BusinessUnitsRoute,
+  CommitmentsRoute: CommitmentsRoute,
+  CompanyRoute: CompanyRoute,
+  ContactRoute: ContactRoute,
+  LocationsRoute: LocationsRoute,
+  NewsRoute: NewsRoute,
   ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
