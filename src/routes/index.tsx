@@ -30,8 +30,11 @@ function Index() {
       <main>
         <Hero />
         <Marquee />
+        <SectionDivider label="Business Units" />
         <ServicesGrid />
+        <SectionDivider label="Who We Are" />
         <AboutSection />
+        <SectionDivider label="Latest" />
         <News />
       </main>
       <Footer />
