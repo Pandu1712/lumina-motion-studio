@@ -41,6 +41,8 @@ export function Header() {
             <Link
               key={n.to}
               to={n.to}
+              activeProps={{ className: "text-amber" }}
+              activeOptions={{ exact: n.to === "/" }}
               className="relative text-sm tracking-wide text-foreground/80 hover:text-amber transition-colors group"
             >
               {n.label}
@@ -49,7 +51,7 @@ export function Header() {
           ))}
         </nav>
 
-        <Link to="/" className="hidden md:inline-flex btn-amber text-sm">
+        <Link to="/contact" className="hidden md:inline-flex btn-amber text-sm">
           Get in touch
           <span>→</span>
         </Link>
