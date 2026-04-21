@@ -101,7 +101,7 @@ function ServicePage() {
               </Reveal>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border mt-12">
-                {service.stats.map((s, i) => (
+                {service.stats.map((s: { label: string; value: string }, i: number) => (
                   <Reveal key={s.label} delay={0.3 + i * 0.1}>
                     <div className="bg-background p-6">
                       <div className="font-display text-3xl text-amber-grad mb-2">{s.value}</div>
@@ -124,7 +124,7 @@ function ServicePage() {
               </h2>
             </Reveal>
             <div className="grid md:grid-cols-2 gap-8">
-              {service.highlights.map((h, i) => (
+              {service.highlights.map((h: string, i: number) => (
                 <Reveal key={h} delay={i * 0.1}>
                   <div className="flex gap-6 group p-6 border-t border-border hover:bg-background transition-colors duration-700">
                     <div className="font-display text-amber text-2xl">0{i + 1}</div>
