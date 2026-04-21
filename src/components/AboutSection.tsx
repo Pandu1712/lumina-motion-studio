@@ -1,7 +1,7 @@
 import textureBg from "@/assets/texture-bg.jpg";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Reveal, RevealText } from "./Reveal";
+import { Reveal, RevealText, Counter, DrawLine } from "./Reveal";
 
 const stats = [
   { v: "40+", l: "Years operating" },
@@ -57,7 +57,8 @@ export function AboutSection() {
             {stats.map((s, i) => (
               <Reveal key={s.l} delay={0.3 + i * 0.1}>
                 <div className="bg-background p-6 group hover:bg-surface transition-colors duration-700">
-                  <div className="font-display text-4xl text-amber-grad mb-2">{s.v}</div>
+                  <div className="font-display text-4xl text-amber-grad mb-2"><Counter value={s.v} /></div>
+                  <DrawLine className="w-12 h-px text-amber/60 mt-3" delay={0.5 + i * 0.1} />
                   <div className="text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
                 </div>
               </Reveal>
