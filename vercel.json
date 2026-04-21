@@ -4,8 +4,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/dist/client/$1",
-      "check": true
+      "destination": "/dist/client/$1"
     },
     {
       "source": "/(.*)",
