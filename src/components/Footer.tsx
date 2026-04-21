@@ -36,11 +36,14 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <div className="text-amber uppercase tracking-[0.3em] text-xs mb-4">Locations</div>
+            <div className="text-amber uppercase tracking-[0.3em] text-xs mb-4">Company</div>
             <ul className="space-y-2 text-muted-foreground">
-              <li>Muscat, Oman</li>
-              <li>Dammam, Saudi Arabia</li>
-              <li>Abu Dhabi, UAE</li>
+              <li><Link to="/company" className="hover:text-foreground">About</Link></li>
+              <li><Link to="/business-units" className="hover:text-foreground">Business Units</Link></li>
+              <li><Link to="/commitments" className="hover:text-foreground">Commitments</Link></li>
+              <li><Link to="/news" className="hover:text-foreground">News</Link></li>
+              <li><Link to="/locations" className="hover:text-foreground">Locations</Link></li>
+              <li><Link to="/contact" className="hover:text-foreground">Contact</Link></li>
             </ul>
           </div>
           <div>
