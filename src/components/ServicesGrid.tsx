@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, type MouseEvent } from "react";
 import { services } from "@/lib/services";
 import { Reveal, RevealText } from "./Reveal";
+import { Text3D } from "./Text3D";
 
 function ServiceCard({ s, i }: { s: typeof services[number]; i: number }) {
   const ref = useRef<HTMLAnchorElement>(null);
