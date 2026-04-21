@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Reveal, RevealText } from "@/components/Reveal";
+import { Reveal, RevealText, Counter, DrawLine } from "@/components/Reveal";
 import { PageTransition } from "@/components/PageTransition";
 import { getService, services } from "@/lib/services";
 
@@ -104,8 +104,9 @@ function ServicePage() {
                 {service.stats.map((s: { label: string; value: string }, i: number) => (
                   <Reveal key={s.label} delay={0.3 + i * 0.1}>
                     <div className="bg-background p-6">
-                      <div className="font-display text-3xl text-amber-grad mb-2">{s.value}</div>
+                      <div className="font-display text-3xl text-amber-grad mb-2"><Counter value={s.value} /></div>
                       <div className="text-xs uppercase tracking-wider text-muted-foreground">{s.label}</div>
+                      <DrawLine className="w-10 h-px text-amber/60 mt-3" delay={0.5 + i * 0.1} />
                     </div>
                   </Reveal>
                 ))}
