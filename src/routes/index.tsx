@@ -7,6 +7,7 @@ import { AboutSection } from "@/components/AboutSection";
 import { Marquee } from "@/components/Marquee";
 import { News } from "@/components/News";
 import { PageTransition } from "@/components/PageTransition";
+import { SectionDivider } from "@/components/SectionDivider";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -29,8 +30,11 @@ function Index() {
       <main>
         <Hero />
         <Marquee />
+        <SectionDivider label="Business Units" />
         <ServicesGrid />
+        <SectionDivider label="Who We Are" />
         <AboutSection />
+        <SectionDivider label="Latest" />
         <News />
       </main>
       <Footer />

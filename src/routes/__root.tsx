@@ -1,4 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { Cursor } from "@/components/Cursor";
 
 import appCss from "../styles.css?url";
 
@@ -65,5 +67,11 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <ScrollProgress />
+      <Cursor />
+      <Outlet />
+    </>
+  );
 }
