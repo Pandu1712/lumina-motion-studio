@@ -2,6 +2,7 @@ import heroImg from "@/assets/hero-rig.jpg";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { RevealText, Reveal } from "./Reveal";
+import { Layered3DTitle } from "./Text3D";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
