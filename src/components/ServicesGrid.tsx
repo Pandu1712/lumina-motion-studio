@@ -25,8 +25,8 @@ function ServiceCard({ s, i }: { s: typeof services[number]; i: number }) {
       <motion.div style={{ rotateX: rx, rotateY: ry, transformPerspective: 1200 }}>
         <Link
           ref={ref}
-          to="/services/$slug"
-          params={{ slug: s.slug }}
+          to="/business-units"
+          hash={s.slug}
           onMouseMove={onMove}
           onMouseLeave={onLeave}
           className="group relative block aspect-[4/5] overflow-hidden bg-surface border border-border"

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -88,7 +89,7 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -208,5 +209,20 @@
 
 .amber-line { display:inline-block; width: 48px; height: 1px; background: var(--amber); vertical-align: middle; margin-right: 1rem; }
 
+/* ANCHOR FOCUS ANIMATION */
+@keyframes target-flash {
+  0% { background-color: transparent; }
+  20% { background-color: oklch(0.78 0.14 70 / 0.15); }
+  100% { background-color: transparent; }
+}
+
+section:target {
+  animation: target-flash 2.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+section:target h2 {
+  color: var(--amber);
+}
+
 /* fonts via system stack fallback - preload Fraunces & Inter from google */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap');
+

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/dist/client/$1",
+      "check": true
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/dist/client/index.html"
+    }
+  ]
+}

@@ -1,10 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import { PageTransition } from "@/components/PageTransition";
 import { SectionDivider } from "@/components/SectionDivider";
 import { Reveal } from "@/components/Reveal";
+import { ServiceSection } from "@/components/ServiceSection";
+import { ScrollTracker } from "@/components/ScrollTracker";
 import { services } from "@/lib/services";
 import heroImg from "@/assets/hero-rig.jpg";
 
@@ -22,10 +25,26 @@ export const Route = createFileRoute("/business-units")({
 });
 
 function UnitsPage() {
+  useEffect(() => {
+    // Handle initial hash navigation
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const id = hash.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 500); // Wait for page transition
+    }
+  }, []);
+
   return (
     <PageTransition>
       <Header />
-      <main>
+      <ScrollTracker />
+      
+      <main className="relative">
         <PageHero
           eyebrow="Business Units"
           title="Six divisions."
@@ -33,38 +52,42 @@ function UnitsPage() {
           image={heroImg}
         />
 
-        <SectionDivider label="Explore" />
+        <SectionDivider label="Index" />
 
-        <section className="py-24 px-6 md:px-10">
-          <div className="max-w-[1400px] mx-auto space-y-px bg-border">
-            {services.map((s, i) => (
-              <Reveal key={s.slug} delay={i * 0.06}>
-                <Link
-                  to="/services/$slug"
-                  params={{ slug: s.slug }}
-                  className="bg-background grid md:grid-cols-12 gap-6 p-6 md:p-10 group hover:bg-surface/40 transition-colors duration-700 items-center"
-                >
-                  <div className="md:col-span-1 font-display text-amber-grad text-3xl">{s.index}</div>
-                  <div className="md:col-span-3 overflow-hidden aspect-[4/3]">
-                    <img src={s.image} alt={s.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1500ms]" />
-                  </div>
-                  <div className="md:col-span-6">
-                    <div className="text-xs uppercase tracking-[0.3em] text-amber mb-2">{s.category}</div>
-                    <h2 className="font-display text-3xl md:text-4xl mb-3 group-hover:text-amber transition-colors duration-500">{s.title}</h2>
-                    <p className="text-foreground/75 leading-relaxed">{s.tagline}</p>
-                  </div>
-                  <div className="md:col-span-2 text-right">
-                    <span className="inline-flex items-center gap-2 text-sm text-amber">
-                      Discover
-                      <span className="w-8 group-hover:w-16 h-px bg-amber transition-all duration-700" />
-                    </span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
+        {/* Directory Header (Quick Links) */}
+        <section className="py-24 px-6 md:px-10 border-b border-border bg-surface/20">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-border border border-border">
+              {services.map((s, i) => (
+                <Reveal key={s.slug} delay={i * 0.05} className="bg-background">
+                  <button 
+                    onClick={() => document.getElementById(s.slug)?.scrollIntoView({ behavior: "smooth" })}
+                    className="w-full text-left p-8 group hover:bg-surface transition-colors h-full flex flex-col justify-between aspect-square md:aspect-auto"
+                  >
+                    <div>
+                      <div className="text-amber text-[10px] tracking-[0.4em] uppercase mb-4">{s.index}</div>
+                      <div className="font-display text-lg leading-tight group-hover:text-amber transition-colors">{s.title}</div>
+                    </div>
+                    <div className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                      Scroll to view →
+                    </div>
+                  </button>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
+
+        <SectionDivider label="Operations" />
+
+        {/* Detailed Sections */}
+        <div className="relative">
+          {services.map((s) => (
+            <ServiceSection key={s.slug} service={s} />
+          ))}
+        </div>
       </main>
+      
       <Footer />
     </PageTransition>
   );
