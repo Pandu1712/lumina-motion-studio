@@ -1,4 +1,5 @@
-import { Reveal, RevealText } from "./Reveal";
+import { Reveal } from "./Reveal";
+import { Text3D } from "./Text3D";
 
 const news = [
   {
@@ -32,7 +33,7 @@ export function News() {
                 <span className="amber-line" /> News & Stories
               </div>
             </Reveal>
-            <RevealText text="Stay tuned." className="font-display text-5xl md:text-6xl" />
+            <Text3D text="Stay tuned." className="font-display text-5xl md:text-6xl block" depth={6} />
           </div>
           <Reveal delay={0.2}>
             <a href="#" className="btn-ghost">View all stories <span>→</span></a>

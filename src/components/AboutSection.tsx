@@ -2,6 +2,7 @@ import textureBg from "@/assets/texture-bg.jpg";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Reveal, RevealText, Counter, DrawLine } from "./Reveal";
+import { Text3D } from "./Text3D";
 
 const stats = [
   { v: "40+", l: "Years operating" },
@@ -33,13 +34,17 @@ export function AboutSection() {
               <span className="amber-line" /> About
             </div>
           </Reveal>
-          <RevealText
+          <Text3D
             text="Servicing Oman's"
-            className="font-display text-5xl md:text-6xl leading-[1]"
+            className="font-display text-5xl md:text-6xl leading-[1] block"
+            depth={6}
           />
-          <RevealText
+          <Text3D
             text="oilfields since 1984."
-            className="font-display italic text-amber-grad text-5xl md:text-6xl leading-[1]"
+            className="font-display text-5xl md:text-6xl leading-[1] block"
+            italic
+            amber
+            depth={6}
             delay={0.15}
           />
         </div>

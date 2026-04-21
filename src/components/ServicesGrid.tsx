@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, type MouseEvent } from "react";
 import { services } from "@/lib/services";
 import { Reveal, RevealText } from "./Reveal";
+import { Text3D } from "./Text3D";
 
 function ServiceCard({ s, i }: { s: typeof services[number]; i: number }) {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -77,13 +78,17 @@ export function ServicesGrid() {
                 <span className="amber-line" /> Business Units
               </div>
             </Reveal>
-            <RevealText
+            <Text3D
               text="Six divisions."
-              className="font-display text-5xl md:text-7xl leading-[0.95]"
+              className="font-display text-5xl md:text-7xl leading-[0.95] block"
+              depth={6}
             />
-            <RevealText
+            <Text3D
               text="One promise."
-              className="font-display italic text-amber-grad text-5xl md:text-7xl leading-[0.95]"
+              className="font-display text-5xl md:text-7xl leading-[0.95] block"
+              italic
+              amber
+              depth={6}
               delay={0.15}
             />
           </div>

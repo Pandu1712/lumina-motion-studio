@@ -2,6 +2,7 @@ import heroImg from "@/assets/hero-rig.jpg";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { RevealText, Reveal } from "./Reveal";
+import { Layered3DTitle } from "./Text3D";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -34,17 +35,21 @@ export function Hero() {
           </div>
         </Reveal>
 
-        <RevealText
+        <Layered3DTitle
           as="h1"
           text="World class energy"
-          className="font-display text-[14vw] md:text-[9vw] leading-[0.9] tracking-tight"
+          className="font-display text-[14vw] md:text-[9vw] leading-[0.9] tracking-tight block"
           delay={0.3}
+          layers={6}
         />
-        <RevealText
+        <Layered3DTitle
           as="h1"
           text="& logistics."
-          className="font-display italic text-amber-grad text-[14vw] md:text-[9vw] leading-[0.9] tracking-tight"
+          className="font-display text-[14vw] md:text-[9vw] leading-[0.9] tracking-tight block"
           delay={0.5}
+          italic
+          amber
+          layers={6}
         />
 
         <Reveal delay={1.2} className="mt-10 max-w-xl">

@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal, RevealText, Counter, DrawLine } from "@/components/Reveal";
+import { Layered3DTitle, Text3D } from "@/components/Text3D";
 import { PageTransition } from "@/components/PageTransition";
 import { getService, services } from "@/lib/services";
 
@@ -72,11 +73,12 @@ function ServicePage() {
                 <span className="amber-line" /> {service.index} · {service.category}
               </div>
             </Reveal>
-            <RevealText
+            <Layered3DTitle
               text={service.title}
               as="h1"
-              className="font-display text-[12vw] md:text-[8vw] leading-[0.9]"
+              className="font-display text-[12vw] md:text-[8vw] leading-[0.9] block"
               delay={0.4}
+              layers={6}
             />
             <Reveal delay={0.9} className="mt-6 max-w-2xl">
               <p className="text-xl text-foreground/80 italic font-display">{service.tagline}</p>

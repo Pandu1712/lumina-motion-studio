@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Reveal } from "./Reveal";
+import { Text3D } from "./Text3D";
 
 export function Footer() {
   return (
@@ -7,9 +8,12 @@ export function Footer() {
       <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-amber/5 blur-3xl" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-24 relative">
         <Reveal>
-          <h2 className="font-display text-5xl md:text-7xl leading-[0.95] max-w-3xl">
-            Engineering trust across <span className="text-amber-grad italic">four decades</span> of operations.
-          </h2>
+          <Text3D
+            as="h2"
+            text="Engineering trust across four decades."
+            className="font-display text-5xl md:text-7xl leading-[0.95] block max-w-4xl"
+            depth={7}
+          />
         </Reveal>
 
         <div className="hairline my-16" />
