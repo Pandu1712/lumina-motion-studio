@@ -78,13 +78,17 @@ export function ServicesGrid() {
                 <span className="amber-line" /> Business Units
               </div>
             </Reveal>
-            <RevealText
+            <Text3D
               text="Six divisions."
-              className="font-display text-5xl md:text-7xl leading-[0.95]"
+              className="font-display text-5xl md:text-7xl leading-[0.95] block"
+              depth={6}
             />
-            <RevealText
+            <Text3D
               text="One promise."
-              className="font-display italic text-amber-grad text-5xl md:text-7xl leading-[0.95]"
+              className="font-display text-5xl md:text-7xl leading-[0.95] block"
+              italic
+              amber
+              depth={6}
               delay={0.15}
             />
           </div>
