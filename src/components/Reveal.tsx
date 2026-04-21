@@ -1,29 +1,63 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, type ReactNode, type ElementType } from "react";
 
+/**
+ * Reveal — premium scroll-driven reveal animation.
+ * Features:
+ *  - High-end elastic easing
+ *  - Staggered child capability
+ *  - Momentum-based entry
+ */
 export function Reveal({
   children,
   delay = 0,
-  y = 40,
-  className,
+  duration = 0.8,
+  width = "fit-content",
+  className = "",
 }: {
   children: ReactNode;
   delay?: number;
-  y?: number;
+  duration?: number;
+  width?: "fit-content" | "100%";
   className?: string;
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-15% 0px -15% 0px" });
+
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 1, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
+    <div ref={ref} className={`relative overflow-hidden ${className}`} style={{ width }}>
+      <motion.div
+        initial={{ y: 50, opacity: 0, clipPath: "inset(0 0 100% 0)" }}
+        animate={isInView ? { y: 0, opacity: 1, clipPath: "inset(0 0 0% 0)" } : {}}
+        transition={{
+          duration,
+          delay: delay + 0.1,
+          ease: [0.22, 1, 0.36, 1], // Premium authentic easing
+        }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+}
+
+export function StaggerReveal({ 
+  children, 
+  delay = 0,
+  interval = 0.08
+}: { 
+  children: ReactNode[]; 
+  delay?: number;
+  interval?: number;
+}) {
+  return (
+    <>
+      {children.map((child, i) => (
+        <Reveal key={i} delay={delay + i * interval}>
+          {child}
+        </Reveal>
+      ))}
+    </>
   );
 }
 

@@ -1,24 +1,14 @@
-import { Outlet, createRootRoute, Link } from "@tanstack/react-router";
-import { ScrollProgress } from "@/components/ScrollProgress";
-import { Cursor } from "@/components/Cursor";
+import { createRootRoute, Outlet, ScrollRestoration, Link } from "@tanstack/react-router";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 text-center">
+      <div>
+        <h1 className="text-7xl font-bold">404</h1>
+        <p className="mt-4 text-muted-foreground uppercase tracking-widest text-xs">Page not found</p>
+        <Link to="/" className="mt-8 inline-block btn-amber">Go Home</Link>
       </div>
     </div>
   );
@@ -30,11 +20,25 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
-    <>
-      <ScrollProgress />
-      <Cursor />
-      <Outlet />
-    </>
+    <SmoothScroll>
+      <div className="min-h-screen bg-background text-foreground selection:bg-amber selection:text-amber-foreground">
+        {/* Global Scroll Progress Hairline */}
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-0.5 bg-amber origin-left z-[100]"
+          style={{ scaleX }}
+        />
+
+        <Outlet />
+        <ScrollRestoration />
+      </div>
+    </SmoothScroll>
   );
 }

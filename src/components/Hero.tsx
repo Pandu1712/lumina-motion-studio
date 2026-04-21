@@ -14,7 +14,7 @@ export function Hero() {
   const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
 
   return (
-    <section ref={ref} className="relative h-[110vh] overflow-hidden grain shadow-inset">
+    <section ref={ref} className="relative min-h-screen md:h-[110vh] overflow-hidden grain shadow-inset">
       <motion.div style={{ y, x, scale }} className="absolute inset-0">
         <img src={heroConvoy} alt="OFSAT winch truck convoy travelling" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/60" />
@@ -26,12 +26,12 @@ export function Hero() {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute top-[45%] left-0 right-0 h-px bg-amber/30 origin-left"
+        className="absolute top-[35%] md:top-[45%] left-0 right-0 h-px bg-amber/30 origin-left"
       />
 
-      <motion.div style={{ y: titleY, opacity }} className="relative z-10 h-full flex flex-col justify-end pb-32 px-6 md:px-10 max-w-[1400px] mx-auto">
+      <motion.div style={{ y: titleY, opacity }} className="relative z-10 h-full flex flex-col justify-end pb-24 md:pb-32 pt-40 md:pt-0 px-6 md:px-10 max-w-[1400px] mx-auto">
         <Reveal delay={0.2}>
-          <div className="flex items-center gap-3 mb-8 text-amber text-xs uppercase tracking-[0.4em]">
+          <div className="flex items-center gap-3 mb-6 md:mb-8 text-amber text-[10px] md:text-xs uppercase tracking-[0.4em]">
             <span className="amber-line" /> Since 1984 · Sultanate of Oman
           </div>
         </Reveal>
@@ -39,18 +39,18 @@ export function Hero() {
         <Layered3DTitle
           as="h1"
           text="World class energy"
-          className="font-display text-[14vw] md:text-[9vw] leading-[0.9] tracking-tight block"
+          className="font-display text-[12vw] md:text-[9vw] leading-[1.1] md:leading-[0.9] tracking-tight block mb-2 md:mb-0"
           delay={0.3}
-          layers={6}
+          layers={3}
         />
         <Layered3DTitle
           as="h1"
           text="& logistics."
-          className="font-display text-[14vw] md:text-[9vw] leading-[0.9] tracking-tight block"
+          className="font-display text-[12vw] md:text-[9vw] leading-[1.1] md:leading-[0.9] tracking-tight block"
           delay={0.5}
           italic
           amber
-          layers={6}
+          layers={3}
         />
 
         <Reveal delay={1.2} className="mt-10 max-w-xl">
