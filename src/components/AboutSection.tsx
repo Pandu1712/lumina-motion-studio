@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Reveal, RevealText, Counter, DrawLine } from "./Reveal";
 import { Text3D } from "./Text3D";
+import { Card3D } from "./Card3D";
 
 const stats = [
   { v: "40+", l: "Years operating" },
@@ -17,7 +18,7 @@ export function AboutSection() {
   const y = useTransform(scrollYProgress, [0, 1], ["-10%", "20%"]);
 
   return (
-    <section id="about" ref={ref} className="relative py-32 overflow-hidden">
+    <section id="about" ref={ref} className="relative py-12 md:py-20 overflow-hidden">
       <motion.img
         style={{ y }}
         src={textureBg}
@@ -38,6 +39,7 @@ export function AboutSection() {
             text="Servicing Oman's"
             className="font-display text-5xl md:text-6xl leading-[1] block"
             depth={6}
+            blinking
           />
           <Text3D
             text="oilfields since 1984."
@@ -46,6 +48,7 @@ export function AboutSection() {
             amber
             depth={6}
             delay={0.15}
+            blinking
           />
         </div>
 
@@ -58,14 +61,16 @@ export function AboutSection() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((s, i) => (
               <Reveal key={s.l} delay={0.3 + i * 0.1}>
-                <div className="bg-background p-6 group hover:bg-surface transition-colors duration-700">
-                  <div className="font-display text-4xl text-amber-grad mb-2"><Counter value={s.v} /></div>
-                  <DrawLine className="w-12 h-px text-amber/60 mt-3" delay={0.5 + i * 0.1} />
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground">{s.l}</div>
-                </div>
+                <Card3D>
+                  <div className="bg-surface/30 p-6 group hover:bg-surface/50 border border-white/5 transition-colors duration-700 rounded-lg">
+                    <div className="font-display text-4xl text-red-grad mb-2"><Counter value={s.v} /></div>
+                    <DrawLine className="w-12 h-px text-red-600/60 mt-3" delay={0.5 + i * 0.1} />
+                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mt-2">{s.l}</div>
+                  </div>
+                </Card3D>
               </Reveal>
             ))}
           </div>

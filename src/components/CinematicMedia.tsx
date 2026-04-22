@@ -3,13 +3,15 @@ import { useRef, type MouseEvent } from "react";
 
 interface CinematicMediaProps {
   src: string;
+  videoSrc?: string;
   alt: string;
   direction?: "left" | "right";
   intensity?: number;
 }
 
-export function CinematicMedia({ src, alt, direction = "right", intensity = 1 }: CinematicMediaProps) {
+export function CinematicMedia({ src, videoSrc, alt, direction = "right", intensity = 1 }: CinematicMediaProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   
   // MOUSE PARALLAX
   const mx = useMotionValue(0.5);
@@ -57,12 +59,26 @@ export function CinematicMedia({ src, alt, direction = "right", intensity = 1 }:
         style={{ x, scale, rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
         className="w-full h-full will-change-transform"
       >
-        <img 
-          src={src} 
-          alt={alt} 
-          className="w-full h-full object-cover grayscale group-hover/media:grayscale-0 transition-all duration-[3000ms]"
-          style={{ transform: "translateZ(0px)" }}
-        />
+        {videoSrc ? (
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            autoPlay
+            loop
+            muted
+            playsInline
+            onCanPlay={() => videoRef.current?.play()}
+            className="w-full h-full object-cover grayscale group-hover/media:grayscale-0 transition-all duration-[2000ms]"
+            style={{ transform: "translateZ(0px)" }}
+          />
+        ) : (
+          <img 
+            src={src} 
+            alt={alt} 
+            className="w-full h-full object-cover grayscale group-hover/media:grayscale-0 transition-all duration-[3000ms]"
+            style={{ transform: "translateZ(0px)" }}
+          />
+        )}
         
         {/* Deep Frame Inner */}
         <div 

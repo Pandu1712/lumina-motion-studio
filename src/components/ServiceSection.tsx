@@ -40,7 +40,7 @@ export function ServiceSection({ service }: ServiceSectionProps) {
               delay: i * 2,
               ease: "linear"
             }}
-            className="absolute w-1 h-1 bg-amber/20 rounded-full blur-[2px]"
+            className="absolute w-1 h-1 bg-amber/20 rounded-full"
             style={{ 
               left: `${15 * i}%`, 
               top: `${80 + (i * 5)}%` 
@@ -69,10 +69,10 @@ export function ServiceSection({ service }: ServiceSectionProps) {
           {/* Glass Stats Box */}
           <div className="relative mb-12 md:mb-16">
             <Reveal delay={0.2}>
-              <div className="grid grid-cols-2 gap-px bg-border border border-border backdrop-blur-md bg-surface/10 rounded-sm overflow-hidden shadow-2xl">
+              <div className="grid grid-cols-2 gap-px bg-border border border-border bg-surface/20 rounded-sm overflow-hidden shadow-2xl">
                 {service.stats.map((s, i) => (
                   <div key={s.label} className="p-6 md:p-8 bg-surface/5 group/stat">
-                    <div className="font-display text-2xl md:text-3xl text-amber-grad mb-1 md:mb-2 transition-transform group-hover/stat:-translate-y-1">
+                    <div className="font-display text-2xl md:text-3xl text-red-grad mb-1 md:mb-2 transition-transform group-hover/stat:-translate-y-1">
                       <Counter value={s.value} />
                     </div>
                     <div className="text-[9px] md:text-[10px] uppercase tracking-widest text-muted-foreground">{s.label}</div>
@@ -100,6 +100,7 @@ export function ServiceSection({ service }: ServiceSectionProps) {
             <div className="relative aspect-[16/10] lg:aspect-[4/5] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)]">
               <CinematicMedia 
                 src={service.image} 
+                videoSrc={service.video}
                 alt={service.title} 
                 direction={service.index === "01" || service.index === "04" ? "right" : "left"}
               />
@@ -107,7 +108,7 @@ export function ServiceSection({ service }: ServiceSectionProps) {
           </Reveal>
 
           {/* Floating Contact Snippet */}
-          <div className="absolute -bottom-8 -left-4 md:-bottom-12 md:-left-12 bg-surface/90 backdrop-blur-xl p-6 md:p-10 border border-white/5 shadow-3xl max-w-[260px] md:max-w-xs transform-gpu" style={{ transform: "translateZ(80px)" }}>
+          <div className="absolute -bottom-8 -left-4 md:-bottom-12 md:-left-12 bg-surface/95 p-6 md:p-10 border border-white/5 shadow-3xl max-w-[260px] md:max-w-xs transform-gpu" style={{ transform: "translateZ(80px)" }}>
             <Reveal delay={0.6}>
               <div className="text-[10px] uppercase tracking-[0.3em] text-amber mb-3">Expert Advisor</div>
               <div className="font-display text-lg md:text-xl mb-1">{service.contact.name}</div>

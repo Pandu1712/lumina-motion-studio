@@ -13,6 +13,7 @@ export type Service = {
   tagline: string;
   description: string;
   image: string;
+  video?: string;
   stats: { label: string; value: string }[];
   highlights: string[];
   contact: { name: string; role: string; email: string; phone: string };
@@ -23,11 +24,12 @@ export const services: Service[] = [
     slug: "rig-moving",
     index: "01",
     category: "Cargo Haulage & Supply Yard",
-    title: "Rig Moving",
+    title: "OFSAT Rig Moving",
     tagline: "Premier rig moving company in the Sultanate of Oman since 1984.",
     description:
       "For the last 20 years OFSAT have enjoyed a long-term partnership with BahwanDHL to help shape and modernise rig moving and logistics. We use a range of differing technologies to ensure that rig moves and cargo operations are run safely, efficiently and reliably.",
     image: rigMove,
+    video: "https://cdn.pixabay.com/video/2021/04/16/71239-538965934_large.mp4",
     stats: [
       { label: "Land rigs moved", value: "110+" },
       { label: "Cargo transported", value: "90,000 t" },
@@ -51,11 +53,12 @@ export const services: Service[] = [
     slug: "generators",
     index: "02",
     category: "Power Solutions",
-    title: "Aggreko Generators",
+    title: "AGGREKO Generators",
     tagline: "Powering progress — wherever energy is needed, on demand.",
     description:
       "We deliver temporary and modular power so businesses can grow and communities can thrive. From mines and data centres to manufacturing sites and entire cities, reliable energy has never been more critical.",
     image: generators,
+    video: "https://cdn.pixabay.com/video/2020/11/07/55688-503971733_large.mp4",
     stats: [
       { label: "Installed MW", value: "320" },
       { label: "Active sites", value: "48" },
@@ -84,6 +87,7 @@ export const services: Service[] = [
     description:
       "OFSAT Drilling is one of the leaders in providing water well and top hole drilling services in the Sultanate of Oman. With high-performance work teams and the most advanced fleet in the region, every project is delivered with precision.",
     image: drilling,
+    video: "https://cdn.pixabay.com/video/2017/09/11/11945-233836077_large.mp4",
     stats: [
       { label: "Wells drilled", value: "1,240" },
       { label: "Avg depth", value: "320 m" },
@@ -107,11 +111,12 @@ export const services: Service[] = [
     slug: "kenworth",
     index: "04",
     category: "Sales · Service · Parts",
-    title: "Kenworth Trucks",
+    title: "KENWORTH Trucks",
     tagline: "Manufacturer of the world's best heavy and medium duty trucks.",
     description:
       "Kenworth is an industry leader in providing fuel-saving technology solutions that help increase efficiency and reduce emissions. As authorised partners, we deliver sales, service and a complete parts ecosystem.",
     image: kenworth,
+    video: "https://cdn.pixabay.com/video/2020/08/18/47516-451623701_large.mp4",
     stats: [
       { label: "Trucks delivered", value: "640" },
       { label: "Service centres", value: "6" },
@@ -140,6 +145,7 @@ export const services: Service[] = [
     description:
       "Established in 1979, Al Mutahidha Transport played an important role in the nation's development through logistics expertise and the ability to professionally transport goods throughout the country.",
     image: logistics,
+    video: "https://cdn.pixabay.com/video/2022/11/30/141045-776768272_large.mp4",
     stats: [
       { label: "Established", value: "1979" },
       { label: "Fleet size", value: "420" },
@@ -168,6 +174,7 @@ export const services: Service[] = [
     description:
       "With a fleet of more than 300 pieces of specialised heavy oilfield winch trucks, cranes, forklifts, low beds and other vehicles, OFSAT Saudi is a complete logistics partner across the Kingdom.",
     image: saudi,
+    video: "https://cdn.pixabay.com/video/2024/06/19/217278_large.mp4",
     stats: [
       { label: "Equipment units", value: "300+" },
       { label: "Active since", value: "2018" },

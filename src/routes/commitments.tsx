@@ -67,7 +67,7 @@ function CommitmentsPage() {
               {certs.map((c, i) => (
                 <Reveal key={c} delay={i * 0.1}>
                   <div className="bg-background p-10">
-                    <div className="font-display text-2xl text-amber-grad">{c}</div>
+                    <div className="font-display text-2xl text-red-grad">{c}</div>
                   </div>
                 </Reveal>
               ))}

@@ -13,12 +13,26 @@ export function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   return (
-    <section ref={ref} className="relative min-h-screen md:h-[110vh] overflow-hidden grain shadow-inset">
+    <section ref={ref} className="mt-28 md:mt-24 relative min-h-screen md:h-screen overflow-hidden grain shadow-inset">
       <motion.div style={{ y, x, scale }} className="absolute inset-0">
-        <img src={heroConvoy} alt="OFSAT winch truck convoy travelling" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/30" />
+        {/* Cinematic Background Video/Image */}
+        <div className="absolute inset-0 z-0 scale-110">
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            onCanPlay={() => videoRef.current?.play()}
+            className="w-full h-full object-cover"          >
+            <source src="https://cdn.pixabay.com/video/2021/04/16/71239-538965934_large.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-1" />
+          <div className="absolute inset-0 bg-black/40 z-1" />
+        </div>
       </motion.div>
 
       {/* floating amber accent line */}
@@ -29,7 +43,7 @@ export function Hero() {
         className="absolute top-[35%] md:top-[45%] left-0 right-0 h-px bg-amber/30 origin-left"
       />
 
-      <motion.div style={{ y: titleY, opacity }} className="relative z-10 h-full flex flex-col justify-end pb-24 md:pb-32 pt-40 md:pt-0 px-6 md:px-10 max-w-[1400px] mx-auto">
+      <motion.div style={{ y: titleY, opacity }} className="relative z-10 h-full flex flex-col justify-end pb-12 md:pb-20 pt-40 md:pt-0 px-6 md:px-10 max-w-[1400px] mx-auto">
         <Reveal delay={0.2}>
           <div className="flex items-center gap-3 mb-6 md:mb-8 text-amber text-[10px] md:text-xs uppercase tracking-[0.4em]">
             <span className="amber-line" /> Since 1984 · Sultanate of Oman
@@ -42,6 +56,7 @@ export function Hero() {
           className="font-display text-[12vw] md:text-[9vw] leading-[1.1] md:leading-[0.9] tracking-tight block mb-2 md:mb-0"
           delay={0.3}
           layers={3}
+          blinking
         />
         <Layered3DTitle
           as="h1"
@@ -51,6 +66,7 @@ export function Hero() {
           italic
           amber
           layers={3}
+          blinking
         />
 
         <Reveal delay={1.2} className="mt-10 max-w-xl">

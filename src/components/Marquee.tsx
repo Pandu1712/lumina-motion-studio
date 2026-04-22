@@ -12,7 +12,7 @@ const items = [
 export function Marquee() {
   const loop = [...items, ...items];
   return (
-    <section className="border-y border-border py-10 overflow-hidden bg-background">
+    <section className="border-y border-border py-6 md:py-8 overflow-hidden bg-background">
       <div className="flex marquee-track gap-16 whitespace-nowrap">
         {loop.map((t, i) => (
           <div key={i} className="flex items-center gap-16">

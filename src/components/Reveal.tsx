@@ -12,7 +12,7 @@ export function Reveal({
   children,
   delay = 0,
   duration = 0.8,
-  width = "fit-content",
+  width = "100%",
   className = "",
 }: {
   children: ReactNode;
@@ -79,19 +79,22 @@ export function RevealText({
   return (
     <Tag ref={ref} className={className}>
       {words.map((word, i) => (
-        <span key={i} className="reveal-mask mr-[0.25em]">
-          <motion.span
-            initial={{ y: "110%", opacity: 0 }}
-            animate={inView ? { y: "0%", opacity: 1 } : {}}
-            transition={{
-              duration: 1,
-              delay: delay + i * 0.06,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            style={{ display: "inline-block" }}
-          >
-            {word}
-          </motion.span>
+        <span key={i}>
+          <span className="reveal-mask">
+            <motion.span
+              initial={{ y: "110%", opacity: 0 }}
+              animate={inView ? { y: "0%", opacity: 1 } : {}}
+              transition={{
+                duration: 1,
+                delay: delay + i * 0.06,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              style={{ display: "inline-block" }}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {i < words.length - 1 && " "}
         </span>
       ))}
     </Tag>

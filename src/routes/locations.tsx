@@ -44,7 +44,7 @@ function LocationsPage() {
                     <div>
                       <div className="text-xs uppercase tracking-[0.3em] text-amber mb-2">{l.type}</div>
                       <Text3D as="h3" text={l.city} className="font-display text-5xl block" depth={5} />
-                      <div className="font-display italic text-amber-grad text-2xl mt-2">{l.country}</div>
+                      <div className="font-display italic text-red-grad text-2xl mt-2">{l.country}</div>
                     </div>
                     <div className="w-16 h-16 border border-amber/40 rotate-45 flex items-center justify-center shrink-0">
                       <div className="w-2 h-2 rotate-45 bg-amber" />

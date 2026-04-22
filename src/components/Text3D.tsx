@@ -16,6 +16,7 @@ export function Text3D({
   amber = false,
   depth = 8,
   delay = 0,
+  blinking = false,
 }: {
   text: string;
   className?: string;
@@ -24,6 +25,7 @@ export function Text3D({
   amber?: boolean;
   depth?: number;
   delay?: number;
+  blinking?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
@@ -50,8 +52,8 @@ export function Text3D({
     .map((i) => {
       const o = Math.max(0.04, 0.55 - i * 0.06);
       const color = amber
-        ? `oklch(0.55 0.13 60 / ${o})`
-        : `oklch(0.12 0.02 195 / ${o})`;
+        ? `oklch(0.55 0.22 25 / ${o})`
+        : `oklch(0.1 0.01 250 / ${o})`;
       return `${i}px ${i}px 0 ${color}`;
     })
     .join(", ");
@@ -72,7 +74,20 @@ export function Text3D({
         className="relative"
       >
         <Tag
-          className={`relative ${italic ? "italic" : ""} ${amber ? "text-amber-grad" : ""} ${className}`}
+          className={`relative ${italic ? "italic" : ""} ${amber ? "text-red-grad" : ""} ${className}`}
+          animate={blinking ? {
+            opacity: [1, 0.5, 1],
+            scale: [1, 1.01, 1],
+          } : {}}
+          whileHover={{
+            rotateY: 360,
+            transition: { duration: 1.5, ease: "easeInOut" }
+          }}
+          transition={blinking ? {
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          } : {}}
           style={{
             textShadow: shadow,
             transform: "translateZ(0)",
@@ -80,19 +95,22 @@ export function Text3D({
           }}
         >
           {words.map((w, i) => (
-            <span key={i} className="reveal-mask mr-[0.2em]">
-              <motion.span
-                initial={{ y: "115%", rotateX: -45, opacity: 0 }}
-                animate={inView ? { y: "0%", rotateX: 0, opacity: 1 } : {}}
-                transition={{
-                  duration: 1.1,
-                  delay: delay + i * 0.07,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                style={{ display: "inline-block", transformOrigin: "50% 100%" }}
-              >
-                {w}
-              </motion.span>
+            <span key={i}>
+              <span className="reveal-mask">
+                <motion.span
+                  initial={{ y: "115%", rotateX: -45, opacity: 0 }}
+                  animate={inView ? { y: "0%", rotateX: 0, opacity: 1 } : {}}
+                  transition={{
+                    duration: 1.1,
+                    delay: delay + i * 0.07,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  style={{ display: "inline-block", transformOrigin: "50% 100%" }}
+                >
+                  {w}
+                </motion.span>
+              </span>
+              {i < words.length - 1 && " "}
             </span>
           ))}
         </Tag>
@@ -104,9 +122,9 @@ export function Text3D({
             backgroundImage: useTransform(
               lightX,
               (v) =>
-                `radial-gradient(160px 100% at ${v} 50%, oklch(1 0 0 / 0.18), transparent 70%)`,
+                `radial-gradient(400px 100% at ${v} 50%, oklch(0.55 0.22 25 / 0.1), transparent 70%)`,
             ),
-            mixBlendMode: "overlay",
+            mixBlendMode: "plus-lighter",
           }}
           className="pointer-events-none absolute inset-0"
         />
@@ -127,6 +145,7 @@ export function Layered3DTitle({
   delay = 0,
   layers = 4,
   as: As = "h1",
+  blinking = false,
 }: {
   text: string;
   className?: string;
@@ -135,6 +154,7 @@ export function Layered3DTitle({
   delay?: number;
   layers?: number;
   as?: ElementType;
+  blinking?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
@@ -178,12 +198,12 @@ export function Layered3DTitle({
               key={i}
               aria-hidden={i !== layers - 1}
               className={`absolute inset-0 ${italic ? "italic" : ""} ${className}`}
-              style={{
-                transform: `translateZ(${z}px) translate(${reverseI * 1.5}px, ${reverseI * 1.5}px)`,
-                color: amber ? "oklch(0.55 0.13 60)" : "oklch(0.45 0.025 195)",
-                opacity: i === layers - 1 ? 0 : opacity,
-                pointerEvents: "none",
-              }}
+                style={{
+                  transform: `translateZ(${z}px) translate(${reverseI * 1.5}px, ${reverseI * 1.5}px)`,
+                  color: amber ? "oklch(0.55 0.22 25)" : "oklch(0.35 0.01 250)",
+                  opacity: i === layers - 1 ? 0 : opacity,
+                  pointerEvents: "none",
+                }}
             >
               {text}
             </Tag>
@@ -191,23 +211,40 @@ export function Layered3DTitle({
         })}
 
         <Tag
-          className={`relative ${italic ? "italic" : ""} ${amber ? "text-amber-grad" : ""} ${className}`}
+          className={`relative ${italic ? "italic" : ""} ${amber ? "text-red-grad" : ""} ${className}`}
+          animate={blinking ? {
+            opacity: [1, 0.5, 1],
+            scale: [1, 1.01, 1],
+          } : {}}
+          whileHover={{
+            rotateY: 360,
+            scale: 1.05,
+            transition: { duration: 1.8, ease: "circOut" }
+          }}
+          transition={blinking ? {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          } : {}}
           style={{ transform: "translateZ(0)" }}
         >
           {text.split(" ").map((w, i) => (
-            <span key={i} className="reveal-mask mr-[0.22em]">
-              <motion.span
-                initial={{ y: "115%", rotateX: -55, opacity: 0 }}
-                animate={inView ? { y: "0%", rotateX: 0, opacity: 1 } : {}}
-                transition={{
-                  duration: 1.2,
-                  delay: delay + i * 0.08,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                style={{ display: "inline-block", transformOrigin: "50% 100%" }}
-              >
-                {w}
-              </motion.span>
+            <span key={i}>
+              <span className="reveal-mask">
+                <motion.span
+                  initial={{ y: "115%", rotateX: -55, opacity: 0 }}
+                  animate={inView ? { y: "0%", rotateX: 0, opacity: 1 } : {}}
+                  transition={{
+                    duration: 1.2,
+                    delay: delay + i * 0.08,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  style={{ display: "inline-block", transformOrigin: "50% 100%" }}
+                >
+                  {w}
+                </motion.span>
+              </span>
+              {i < text.split(" ").length - 1 && " "}
             </span>
           ))}
         </Tag>

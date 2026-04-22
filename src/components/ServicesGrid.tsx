@@ -2,15 +2,14 @@ import { Link } from "@tanstack/react-router";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useRef, type MouseEvent } from "react";
 import { services } from "@/lib/services";
-import { Reveal, RevealText } from "./Reveal";
 import { Text3D } from "./Text3D";
 
 function ServiceCard({ s, i }: { s: typeof services[number]; i: number }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const rx = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), { stiffness: 150, damping: 20 });
-  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-10, 10]), { stiffness: 150, damping: 20 });
+  const rx = useSpring(useTransform(my, [-0.5, 0.5], [15, -15]), { stiffness: 100, damping: 20 });
+  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-20, 20]), { stiffness: 100, damping: 20 });
 
   const onMove = (e: MouseEvent) => {
     if (!ref.current) return;
@@ -21,86 +20,95 @@ function ServiceCard({ s, i }: { s: typeof services[number]; i: number }) {
   const onLeave = () => { mx.set(0); my.set(0); };
 
   return (
-    <Reveal delay={i * 0.08}>
-      <motion.div style={{ rotateX: rx, rotateY: ry, transformPerspective: 1200 }}>
-        <Link
-          ref={ref}
-          to="/business-units"
-          hash={s.slug}
-          onMouseMove={onMove}
-          onMouseLeave={onLeave}
-          className="group relative block aspect-[4/5] overflow-hidden bg-surface border border-border"
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          <motion.img
+    <motion.div 
+      style={{ rotateX: rx, rotateY: ry, transformPerspective: 1200 }}
+      className="opacity-100 group transition-all duration-700"
+    >
+      <Link
+        ref={ref}
+        to="/services/$slug"
+        params={{ slug: s.slug }}
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
+        className="group relative block aspect-[4/5] overflow-hidden bg-neutral-900 border border-white/10"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* Background Image with Dark Overlay */}
+        <div className="absolute inset-0">
+          <img
             src={s.image}
             alt={s.title}
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-90 transition-all duration-[1200ms] group-hover:scale-110"
+            className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20" />
+        </div>
 
-          {/* corner index */}
-          <div className="absolute top-4 md:top-6 left-4 md:left-6 text-amber text-[10px] md:text-xs tracking-[0.4em] uppercase" style={{ transform: "translateZ(40px)" }}>
-            {s.index} / {String(services.length).padStart(2, "0")}
+        {/* Content Area */}
+        <div className="relative z-10 h-full p-8 flex flex-col" style={{ transform: "translateZ(30px)" }}>
+          {/* Category */}
+          <div className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-white/50 mb-2 font-medium">
+            {s.category}
           </div>
 
-          {/* hover arrow */}
-          <div className="absolute top-4 md:top-6 right-4 md:right-6 w-8 h-8 md:w-10 md:h-10 rounded-full border border-amber/40 flex items-center justify-center text-amber opacity-0 group-hover:opacity-100 group-hover:rotate-45 transition-all duration-700"
-               style={{ transform: "translateZ(40px)" }}>
-            →
-          </div>
+          {/* Title */}
+          <h3 className="font-display text-2xl md:text-3xl lg:text-4xl leading-tight mb-4 text-white font-bold">
+            {s.title}
+          </h3>
 
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8" style={{ transform: "translateZ(30px)" }}>
-            <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-amber mb-2 md:mb-3">{s.category}</div>
-            <h3 className="font-display text-2xl md:text-4xl leading-tight mb-2 md:mb-3">{s.title}</h3>
-            <p className="text-xs md:text-sm text-foreground/70 leading-relaxed line-clamp-2 max-w-xs">{s.tagline}</p>
+          {/* Tagline */}
+          <p className="text-sm md:text-base text-white/60 leading-relaxed max-w-xs mb-auto">
+            {s.tagline}
+          </p>
 
-            <div className="mt-4 md:mt-6 flex items-center gap-3 text-sm text-amber">
-              <span className="w-0 group-hover:w-12 h-px bg-amber transition-all duration-700" />
-              <span>Learn more</span>
-            </div>
+          {/* Button at the bottom */}
+          <div className="mt-8">
+            <span className="inline-flex items-center px-6 py-2 border border-white/60 rounded-full text-[10px] md:text-xs uppercase tracking-widest text-white font-bold group-hover:bg-white group-hover:text-black transition-all duration-300">
+              LEARN MORE
+            </span>
           </div>
-        </Link>
-      </motion.div>
-    </Reveal>
+        </div>
+      </Link>
+    </motion.div>
   );
 }
 
 export function ServicesGrid() {
   return (
-    <section id="units" className="relative py-16 md:py-32 px-6 md:px-10">
+    <section id="units" className="relative py-12 md:py-16 px-6 md:px-10 bg-background">
       <div className="max-w-[1400px] mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 md:mb-20">
           <div>
-            <Reveal>
-              <div className="flex items-center gap-3 mb-4 md:mb-6 text-amber text-xs uppercase tracking-[0.4em]">
-                <span className="amber-line" /> Business Units
-              </div>
-            </Reveal>
-            <Text3D
-              text="Six divisions."
-              className="font-display text-4xl sm:text-5xl md:text-7xl leading-[0.95] block"
-              depth={3}
-            />
-            <Text3D
-              text="One promise."
-              className="font-display text-4xl sm:text-5xl md:text-7xl leading-[0.95] block"
-              italic
-              amber
-              depth={3}
-              delay={0.15}
-            />
+            <div className="flex items-center gap-3 mb-4 md:mb-6 text-amber text-xs uppercase tracking-[0.4em]">
+              <span className="amber-line" /> Business Units
+            </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <Text3D
+                text="Six divisions."
+                className="font-display text-4xl sm:text-5xl md:text-7xl leading-[0.95] block"
+                depth={3}
+                blinking
+              />
+              <Text3D
+                text="One promise."
+                className="font-display text-4xl sm:text-5xl md:text-7xl leading-[0.95] block"
+                italic
+                amber
+                depth={3}
+                delay={0.15}
+                blinking
+              />
+            </div>
           </div>
-          <Reveal delay={0.3} className="max-w-md">
+          <div className="max-w-md">
             <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
               From rig moves across Omani deserts to fleet operations in Saudi Arabia, every business unit is engineered
               around safety, efficiency and long-term partnership.
             </p>
-          </Reveal>
+          </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((s, i) => (
             <ServiceCard key={s.slug} s={s} i={i} />
           ))}
