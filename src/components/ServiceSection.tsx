@@ -108,7 +108,7 @@ export function ServiceSection({ service }: ServiceSectionProps) {
           </Reveal>
 
           {/* Floating Contact Snippet */}
-          <div className="absolute -bottom-8 -left-4 md:-bottom-12 md:-left-12 bg-surface/95 p-6 md:p-10 border border-white/5 shadow-3xl max-w-[260px] md:max-w-xs transform-gpu" style={{ transform: "translateZ(80px)" }}>
+          <div className="absolute -bottom-8 -left-4 md:-bottom-12 md:-left-12 bg-surface/95 p-6 md:p-10 border border-black/5 shadow-3xl max-w-[260px] md:max-w-xs transform-gpu" style={{ transform: "translateZ(80px)" }}>
             <Reveal delay={0.6}>
               <div className="text-[10px] uppercase tracking-[0.3em] text-amber mb-3">Expert Advisor</div>
               <div className="font-display text-lg md:text-xl mb-1">{service.contact.name}</div>

@@ -65,9 +65,9 @@ export function AboutSection() {
             {stats.map((s, i) => (
               <Reveal key={s.l} delay={0.3 + i * 0.1}>
                 <Card3D>
-                  <div className="bg-surface/30 p-6 group hover:bg-surface/50 border border-white/5 transition-colors duration-700 rounded-lg">
+                  <div className="bg-surface/30 p-6 group hover:bg-surface/50 border border-black/5 transition-colors duration-700 rounded-lg">
                     <div className="font-display text-4xl text-red-grad mb-2"><Counter value={s.v} /></div>
-                    <DrawLine className="w-12 h-px text-red-600/60 mt-3" delay={0.5 + i * 0.1} />
+                    <DrawLine className="w-12 h-px text-amber/60 mt-3" delay={0.5 + i * 0.1} />
                     <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mt-2">{s.l}</div>
                   </div>
                 </Card3D>

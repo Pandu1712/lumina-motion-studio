@@ -59,10 +59,10 @@ function CompanyPage() {
                 {stats.map((s, i) => (
                   <Reveal key={s.l} delay={0.3 + i * 0.08}>
                     <Card3D>
-                      <div className="group bg-surface/30 p-6 rounded-lg border border-white/5 hover:bg-surface/50 transition-colors duration-500">
+                      <div className="group bg-surface/30 p-6 rounded-lg border border-black/5 hover:bg-surface/50 transition-colors duration-500">
                         <div className="font-display text-5xl text-red-grad mb-2"><Counter value={s.v} /></div>
                         <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-bold">{s.l}</div>
-                        <div className="w-8 h-0.5 bg-red-600/30 mt-4 group-hover:w-full transition-all duration-700" />
+                        <div className="w-8 h-0.5 bg-black/30 mt-4 group-hover:w-full transition-all duration-700" />
                       </div>
                     </Card3D>
                   </Reveal>
@@ -83,7 +83,7 @@ function CompanyPage() {
             <div className="space-y-0">
                {timeline.map((t, i) => (
                 <Reveal key={t.year} delay={i * 0.08}>
-                  <div className="group relative py-12 border-b border-white/5 hover:border-red-600/30 transition-all duration-500">
+                  <div className="group relative py-12 border-b border-black/5 hover:border-black/30 transition-all duration-500">
                     <div className="grid md:grid-cols-12 gap-6 md:gap-12 items-baseline">
                       <div className="md:col-span-2">
                         <div className="font-display text-5xl md:text-6xl text-red-grad opacity-50 group-hover:opacity-100 transition-opacity duration-700">
@@ -91,7 +91,7 @@ function CompanyPage() {
                         </div>
                       </div>
                       <div className="md:col-span-10">
-                        <h3 className="font-display text-2xl md:text-3xl mb-4 group-hover:text-red-600 transition-colors duration-500">
+                        <h3 className="font-display text-2xl md:text-3xl mb-4 group-hover:text-black transition-colors duration-500">
                           {t.title}
                         </h3>
                         <p className="text-foreground/70 leading-relaxed text-base md:text-lg max-w-2xl font-light">
@@ -100,7 +100,7 @@ function CompanyPage() {
                       </div>
                     </div>
                     {/* Decorative hover line */}
-                    <div className="absolute bottom-0 left-0 w-0 h-px bg-red-600 transition-all duration-1000 group-hover:w-full" />
+                    <div className="absolute bottom-0 left-0 w-0 h-px bg-black transition-all duration-1000 group-hover:w-full" />
                   </div>
                 </Reveal>
                ))}
@@ -119,15 +119,15 @@ function CompanyPage() {
               {leadership.map((p, i) => (
                 <Reveal key={p.name} delay={i * 0.1}>
                   <Card3D className="h-full">
-                    <div className="group h-full bg-surface/20 p-6 rounded-xl border border-white/5 hover:bg-surface/30 transition-colors duration-500">
-                      <div className="aspect-[4/5] mb-6 bg-surface-elevated flex items-center justify-center overflow-hidden relative border border-white/5 rounded-lg">
-                          <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="group h-full bg-surface/20 p-6 rounded-xl border border-black/5 hover:bg-surface/30 transition-colors duration-500">
+                      <div className="aspect-[4/5] mb-6 bg-surface-elevated flex items-center justify-center overflow-hidden relative border border-black/5 rounded-lg">
+                          <div className="absolute inset-0 bg-gradient-to-br from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                           <span className="font-display text-8xl text-red-grad opacity-10 group-hover:opacity-30 transition-all duration-700 italic scale-125 group-hover:scale-110">
                             {p.name.split(" ").map(n => n[0]).join("")}
                           </span>
                       </div>
-                      <div className="text-[10px] uppercase tracking-[0.3em] text-red-600 font-bold mb-3">{p.role}</div>
-                      <h3 className="font-display text-2xl mb-4 group-hover:text-red-600 transition-colors duration-500">{p.name}</h3>
+                      <div className="text-[10px] uppercase tracking-[0.3em] text-black font-bold mb-3">{p.role}</div>
+                      <h3 className="font-display text-2xl mb-4 group-hover:text-black transition-colors duration-500">{p.name}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed font-light">{p.bio}</p>
                     </div>
                   </Card3D>

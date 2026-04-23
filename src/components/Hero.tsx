@@ -28,10 +28,10 @@ export function Hero() {
             playsInline
             onCanPlay={() => videoRef.current?.play()}
             className="w-full h-full object-cover"          >
-            <source src="https://cdn.pixabay.com/video/2021/04/16/71239-538965934_large.mp4" type="video/mp4" />
+            <source src="https://cdn.pixabay.com/video/2025/11/04/313796_large.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-1" />
-          <div className="absolute inset-0 bg-black/40 z-1" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent z-1" />
+          <div className="absolute inset-0 bg-white/10 z-1" />
         </div>
       </motion.div>
 
@@ -89,13 +89,13 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.4em] text-muted-foreground flex flex-col items-center gap-3"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.4em] text-foreground flex flex-col items-center gap-3"
       >
         Scroll
         <motion.div
           animate={{ y: [0, 12, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-px h-12 bg-gradient-to-b from-amber to-transparent"
+          className="w-px h-12 bg-gradient-to-b from-foreground to-transparent"
         />
       </motion.div>
     </section>

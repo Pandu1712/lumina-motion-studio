@@ -26,7 +26,7 @@ function ServiceDetail() {
         <section className="px-6 md:px-10 mb-16">
           <div className="max-w-[1400px] mx-auto text-center">
             <Reveal className="inline-block mb-8">
-              <Link to="/" className="inline-flex items-center gap-2 text-red-600 text-sm uppercase tracking-widest hover:gap-4 transition-all font-bold">
+              <Link to="/" className="inline-flex items-center gap-2 text-black text-sm uppercase tracking-widest hover:gap-4 transition-all font-bold">
                 <ArrowLeft size={16} /> Back
               </Link>
             </Reveal>
@@ -54,8 +54,8 @@ function ServiceDetail() {
                   <img src={service.image} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-4 h-4 rounded-full bg-red-600" />
-                  <div className="w-4 h-4 rounded-full bg-red-200" />
+                  <div className="w-4 h-4 rounded-full bg-black" />
+                  <div className="w-4 h-4 rounded-full bg-gray-200" />
                 </div>
              </div>
 
@@ -66,7 +66,7 @@ function ServiceDetail() {
                
                <div className="grid grid-cols-2 gap-x-12 gap-y-16">
                  {service.stats.map((stat, i) => (
-                   <div key={i} className="border-l-4 border-red-600 pl-6">
+                   <div key={i} className="border-l-4 border-black pl-6">
                      <div className="text-4xl font-bold mb-1">{stat.value}</div>
                      <div className="text-xs uppercase tracking-widest text-gray-500">{stat.label}</div>
                    </div>
@@ -83,7 +83,7 @@ function ServiceDetail() {
              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
                {service.highlights.map((h, i) => (
                  <div key={i} className="bg-white p-10 shadow-sm rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
-                    <div className="text-red-600 font-bold mb-6 text-xl">0{i+1}.</div>
+                    <div className="text-black font-bold mb-6 text-xl">0{i+1}.</div>
                     <p className="text-gray-700 leading-relaxed">{h}</p>
                  </div>
                ))}
@@ -102,8 +102,8 @@ function ServiceDetail() {
               ))}
             </div>
             <div className="mt-8 flex justify-center gap-4">
-              <div className="w-4 h-4 rounded-full bg-red-600" />
-              <div className="w-4 h-4 rounded-full bg-red-200" />
+              <div className="w-4 h-4 rounded-full bg-black" />
+              <div className="w-4 h-4 rounded-full bg-gray-200" />
             </div>
           </div>
         </section>
@@ -114,13 +114,13 @@ function ServiceDetail() {
              <h3 className="text-2xl font-bold mb-12">For {service.title} Related Enquiries Please Contact</h3>
              <div className="max-w-xl mx-auto space-y-4">
                <div className="text-3xl font-bold">{service.contact.name}</div>
-               <div className="text-red-600 uppercase tracking-widest text-sm font-bold mb-8">{service.contact.role}</div>
+               <div className="text-black uppercase tracking-widest text-sm font-bold mb-8">{service.contact.role}</div>
                
                <div className="flex flex-col md:flex-row justify-center gap-8 pt-8">
-                 <a href={`mailto:${service.contact.email}`} className="flex items-center justify-center gap-3 text-gray-700 hover:text-red-600 transition-colors">
+                 <a href={`mailto:${service.contact.email}`} className="flex items-center justify-center gap-3 text-gray-700 hover:text-black transition-colors">
                    <Mail size={20} /> {service.contact.email}
                  </a>
-                 <a href={`tel:${service.contact.phone}`} className="flex items-center justify-center gap-3 text-gray-700 hover:text-red-600 transition-colors">
+                 <a href={`tel:${service.contact.phone}`} className="flex items-center justify-center gap-3 text-gray-700 hover:text-black transition-colors">
                    <Phone size={20} /> {service.contact.phone}
                  </a>
                </div>

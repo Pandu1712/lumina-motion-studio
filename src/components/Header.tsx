@@ -20,9 +20,7 @@ export function Header({ light = false }: { light?: boolean }) {
   const bg = useTransform(
     scrollY,
     [0, 100],
-    light
-      ? ["rgba(255, 255, 255, 0.95)", "rgba(255, 255, 255, 1)"]
-      : ["oklch(0.12 0.01 250 / 0)", "oklch(0.12 0.01 250 / 0.95)"]
+    ["oklch(0.98 0 0 / 0)", "oklch(0.98 0 0 / 0.95)"]
   );
   const blur = useTransform(scrollY, [0, 100], ["blur(0px)", "blur(4px)"]);
   const [open, setOpen] = useState(false);
@@ -30,7 +28,7 @@ export function Header({ light = false }: { light?: boolean }) {
   return (
     <motion.header
       style={{ backgroundColor: bg, backdropFilter: blur }}
-      className={`fixed top-0 inset-x-0 z-50 border-b ${light ? "border-black/10" : "border-white/5"}`}
+      className="fixed top-0 inset-x-0 z-50 border-b border-foreground/5"
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-28 md:h-24 flex items-center justify-between">
         <Link to="/" className="flex items-center group">
@@ -45,9 +43,7 @@ export function Header({ light = false }: { light?: boolean }) {
               key={n.to}
               to={n.to}
               activeOptions={{ exact: n.to === "/" }}
-              className={`relative text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 group py-2 ${
-                light ? "text-black/60 hover:text-black" : "text-white/60 hover:text-white"
-              }`}
+              className="relative text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 group py-2 text-foreground/60 hover:text-foreground"
             >
               {({ isActive }) => (
                 <>
@@ -55,11 +51,11 @@ export function Header({ light = false }: { light?: boolean }) {
                   {isActive ? (
                     <motion.span
                       layoutId="activeNav"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-red-600"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-amber"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   ) : (
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600/50 transition-all duration-500 group-hover:w-full" />
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber/50 transition-all duration-500 group-hover:w-full" />
                   )}
                 </>
               )}
@@ -72,7 +68,7 @@ export function Header({ light = false }: { light?: boolean }) {
             Get in touch
           </Link>
 
-          <button onClick={() => setOpen(!open)} className={`lg:hidden p-2 ml-auto ${light ? "text-black" : "text-foreground"}`}>
+          <button onClick={() => setOpen(!open)} className="lg:hidden p-2 ml-auto text-foreground">
             {open ? <X /> : <Menu />}
           </button>
         </div>

@@ -30,17 +30,29 @@ function ServiceCard({ s, i }: { s: typeof services[number]; i: number }) {
         params={{ slug: s.slug }}
         onMouseMove={onMove}
         onMouseLeave={onLeave}
-        className="group relative block aspect-[4/5] overflow-hidden bg-neutral-900 border border-white/10"
+        className="group relative block aspect-[4/5] overflow-hidden bg-neutral-900 border border-black/10"
         style={{ transformStyle: "preserve-3d" }}
       >
-        {/* Background Image with Dark Overlay */}
+        {/* Background Video/Image with Dark Overlay */}
         <div className="absolute inset-0">
-          <img
-            src={s.image}
-            alt={s.title}
-            loading="lazy"
-            className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000"
-          />
+          {s.video ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000"
+            >
+              <source src={s.video} type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              src={s.image}
+              alt={s.title}
+              loading="lazy"
+              className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20" />
         </div>
 

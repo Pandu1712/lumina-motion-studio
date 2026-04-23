@@ -52,7 +52,7 @@ export function Text3D({
     .map((i) => {
       const o = Math.max(0.04, 0.55 - i * 0.06);
       const color = amber
-        ? `oklch(0.55 0.22 25 / ${o})`
+        ? `oklch(0.12 0.01 250 / ${o})`
         : `oklch(0.1 0.01 250 / ${o})`;
       return `${i}px ${i}px 0 ${color}`;
     })
@@ -122,7 +122,7 @@ export function Text3D({
             backgroundImage: useTransform(
               lightX,
               (v) =>
-                `radial-gradient(400px 100% at ${v} 50%, oklch(0.55 0.22 25 / 0.1), transparent 70%)`,
+                `radial-gradient(400px 100% at ${v} 50%, oklch(0.12 0.01 250 / 0.05), transparent 70%)`,
             ),
             mixBlendMode: "plus-lighter",
           }}
@@ -200,7 +200,7 @@ export function Layered3DTitle({
               className={`absolute inset-0 ${italic ? "italic" : ""} ${className}`}
                 style={{
                   transform: `translateZ(${z}px) translate(${reverseI * 1.5}px, ${reverseI * 1.5}px)`,
-                  color: amber ? "oklch(0.55 0.22 25)" : "oklch(0.35 0.01 250)",
+                  color: amber ? "oklch(0.55 0.22 25)" : "oklch(0.45 0.01 250)",
                   opacity: i === layers - 1 ? 0 : opacity,
                   pointerEvents: "none",
                 }}

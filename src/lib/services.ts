@@ -29,7 +29,7 @@ export const services: Service[] = [
     description:
       "For the last 20 years OFSAT have enjoyed a long-term partnership with BahwanDHL to help shape and modernise rig moving and logistics. We use a range of differing technologies to ensure that rig moves and cargo operations are run safely, efficiently and reliably.",
     image: rigMove,
-    video: "https://cdn.pixabay.com/video/2021/04/16/71239-538965934_large.mp4",
+    video: "https://cdn.pixabay.com/video/2024/06/19/217278_large.mp4",
     stats: [
       { label: "Land rigs moved", value: "110+" },
       { label: "Cargo transported", value: "90,000 t" },
@@ -58,7 +58,7 @@ export const services: Service[] = [
     description:
       "We deliver temporary and modular power so businesses can grow and communities can thrive. From mines and data centres to manufacturing sites and entire cities, reliable energy has never been more critical.",
     image: generators,
-    video: "https://cdn.pixabay.com/video/2020/11/07/55688-503971733_large.mp4",
+    video: "https://cdn.pixabay.com/video/2024/02/10/212001-944207865_large.mp4",
     stats: [
       { label: "Installed MW", value: "320" },
       { label: "Active sites", value: "48" },
@@ -116,7 +116,7 @@ export const services: Service[] = [
     description:
       "Kenworth is an industry leader in providing fuel-saving technology solutions that help increase efficiency and reduce emissions. As authorised partners, we deliver sales, service and a complete parts ecosystem.",
     image: kenworth,
-    video: "https://cdn.pixabay.com/video/2020/08/18/47516-451623701_large.mp4",
+    video: "https://cdn.pixabay.com/video/2022/12/18/143479-782374009_large.mp4",
     stats: [
       { label: "Trucks delivered", value: "640" },
       { label: "Service centres", value: "6" },
@@ -145,7 +145,7 @@ export const services: Service[] = [
     description:
       "Established in 1979, Al Mutahidha Transport played an important role in the nation's development through logistics expertise and the ability to professionally transport goods throughout the country.",
     image: logistics,
-    video: "https://cdn.pixabay.com/video/2022/11/30/141045-776768272_large.mp4",
+    video: "https://cdn.pixabay.com/video/2019/04/23/23008-332257750_large.mp4",
     stats: [
       { label: "Established", value: "1979" },
       { label: "Fleet size", value: "420" },
@@ -174,7 +174,7 @@ export const services: Service[] = [
     description:
       "With a fleet of more than 300 pieces of specialised heavy oilfield winch trucks, cranes, forklifts, low beds and other vehicles, OFSAT Saudi is a complete logistics partner across the Kingdom.",
     image: saudi,
-    video: "https://cdn.pixabay.com/video/2024/06/19/217278_large.mp4",
+    video: "https://cdn.pixabay.com/video/2025/11/04/313796_large.mp4",
     stats: [
       { label: "Equipment units", value: "300+" },
       { label: "Active since", value: "2018" },

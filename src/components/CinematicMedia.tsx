@@ -82,7 +82,7 @@ export function CinematicMedia({ src, videoSrc, alt, direction = "right", intens
         
         {/* Deep Frame Inner */}
         <div 
-          className="absolute inset-[10px] md:inset-[20px] border border-white/5 pointer-events-none" 
+          className="absolute inset-[10px] md:inset-[20px] border border-black/5 pointer-events-none" 
           style={{ transform: "translateZ(40px)" }}
         />
 
