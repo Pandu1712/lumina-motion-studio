@@ -1,23 +1,28 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
-import { ServicesGrid } from "@/components/ServicesGrid";
-import { AboutSection } from "@/components/AboutSection";
-import { Marquee } from "@/components/Marquee";
-import { News } from "@/components/News";
 import { PageTransition } from "@/components/PageTransition";
+import { NoorHeader } from "@/components/noor/NoorHeader";
+import { NoorHero } from "@/components/noor/NoorHero";
+import { NoorMarquee } from "@/components/noor/NoorMarquee";
+import { NoorCollection } from "@/components/noor/NoorCollection";
+import { NoorStory } from "@/components/noor/NoorStory";
+import { NoorSourcing } from "@/components/noor/NoorSourcing";
+import { NoorContact } from "@/components/noor/NoorContact";
 import { SectionDivider } from "@/components/SectionDivider";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "OFSAT — World class energy & logistics solutions" },
+      { title: "NOOR — Heirloom dry fruits, hand-picked since 1962" },
       {
         name: "description",
         content:
-          "OFSAT delivers premium rig moving, drilling, power solutions and heavy logistics across Oman, Saudi Arabia and the GCC since 1984.",
+          "NOOR is a third-generation house of premium dry fruits — single-origin almonds, pistachios, dates, cashews, walnuts and Mongra saffron sourced directly from Kashmir, Iran and Jordan.",
+      },
+      { property: "og:title", content: "NOOR — Heirloom dry fruits, hand-picked" },
+      {
+        property: "og:description",
+        content: "Six rare harvests sourced directly from the world's most celebrated groves. No middlemen. No compromise.",
       },
     ],
   }),
@@ -26,18 +31,18 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <PageTransition>
-      <Header />
+      <NoorHeader />
       <main>
-        <Hero />
-        <Marquee />
-        <SectionDivider label="Business Units" />
-        <ServicesGrid />
-        <SectionDivider label="Who We Are" />
-        <AboutSection />
-        <SectionDivider label="Latest" />
-        <News />
+        <NoorHero />
+        <NoorMarquee />
+        <SectionDivider label="The Collection" />
+        <NoorCollection />
+        <SectionDivider label="Our Story" />
+        <NoorStory />
+        <SectionDivider label="Sourcing" />
+        <NoorSourcing />
+        <NoorContact />
       </main>
-      <Footer />
     </PageTransition>
   );
 }
