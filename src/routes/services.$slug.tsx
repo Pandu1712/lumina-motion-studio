@@ -83,7 +83,7 @@ function ServiceDetail() {
                </Reveal>
                
                <div className="grid grid-cols-2 gap-x-12 gap-y-16">
-                 {service.stats.map((stat, i) => (
+                 {service.stats.map((stat: { label: string; value: string }, i: number) => (
                    <Reveal key={i} delay={0.3 + i * 0.1}>
                      <div className="group border-l-4 border-amber pl-8 hover:pl-10 transition-all duration-500">
                        <div className="text-5xl font-display text-red-grad mb-3"><Counter value={stat.value} /></div>
@@ -104,7 +104,7 @@ function ServiceDetail() {
              </div>
              
              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-               {service.highlights.map((h, i) => (
+               {service.highlights.map((h: string, i: number) => (
                  <Reveal key={i} delay={i * 0.1}>
                    <Card3D className="h-full">
                      <div className="bg-surface/50 p-12 h-full shadow-2xl rounded-2xl border border-black/5 hover:border-amber/30 transition-all duration-700 group">
