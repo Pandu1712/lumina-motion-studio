@@ -65,7 +65,7 @@ function ServiceDetail() {
                </p>
                
                <div className="grid grid-cols-2 gap-x-12 gap-y-16">
-                 {service.stats.map((stat, i) => (
+                 {service.stats.map((stat: { label: string; value: string }, i: number) => (
                    <div key={i} className="border-l-4 border-black pl-6">
                      <div className="text-4xl font-bold mb-1">{stat.value}</div>
                      <div className="text-xs uppercase tracking-widest text-gray-500">{stat.label}</div>
@@ -81,7 +81,7 @@ function ServiceDetail() {
           <div className="max-w-[1400px] mx-auto">
              <h2 className="text-4xl md:text-6xl font-bold mb-20 text-center">Operational Portfolio</h2>
              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-               {service.highlights.map((h, i) => (
+               {service.highlights.map((h: string, i: number) => (
                  <div key={i} className="bg-white p-10 shadow-sm rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
                     <div className="text-black font-bold mb-6 text-xl">0{i+1}.</div>
                     <p className="text-gray-700 leading-relaxed">{h}</p>
